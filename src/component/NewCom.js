@@ -17,13 +17,13 @@ const NewCom = (props) => {
 
 	const updateNews = async () => {
 		props.setProgress(10);
-		const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pagesize=${props.pageSize}`;
+		const url = `https://newsapi.in/newsapi/news.php?apiKey=${props.apiKey}&country=${props.country}&category=${props.category}&page=${page}&pagesize=${props.pageSize}`;
 		setLoaing(true);
 		let data = await fetch(url, cors());
 		props.setProgress(30);
 		let parseData = await data.json();
 		props.setProgress(60);
-
+console.log(parseData);
 		setArticles(parseData.articles);
 		setPage(page);
 		setTotalResults(parseData.totalResults);
@@ -40,9 +40,9 @@ const NewCom = (props) => {
 	}, []);
 
 	const fetchMoreData = async () => {
-		const url = `https://newsapi.org/v2/top-headlines?country=${
-			props.country
-		}&category=${props.category}&apiKey=${props.apiKey}&page=${
+		const url = `https://newsapi.in/newsapi/news.php?apiKey=${
+			props.apiKey
+		}&country=${props.country}&category=${props.category}&page=${
 			page + 1
 		}&pagesize=${props.pageSize}`;
 		setPage(page + 1);
