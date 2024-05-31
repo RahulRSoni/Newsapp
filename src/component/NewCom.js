@@ -46,7 +46,7 @@ const NewCom = (props) => {
 			page + 1
 		}&pagesize=${props.pageSize}`;
 		setPage(page + 1);
-		let data = await fetch(url);
+		let data = await fetch(url, cors());
 		let parseData = await data.json();
 		setArticles(articles.concat(parseData.articles));
 		setTotalResults(parseData.totalResults);
