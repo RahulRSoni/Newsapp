@@ -5,6 +5,7 @@
 	"main": "index.js",
 	"dependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+		"cors": "^2.8.5",
 		"react": "^16.13.0",
 		"react-dom": "16.13",
 		"react-infinite-scroll-component": "^6.1.0",
