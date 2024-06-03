@@ -17,13 +17,13 @@ const NewCom = (props) => {
 
 	const updateNews = async () => {
 		props.setProgress(10);
-		const url = `https://newsapi.in/newsapi/news.php?apiKey=${props.apiKey}&country=${props.country}&category=${props.category}&page=${page}&pagesize=${props.pageSize}`;
+		const url = `https://newsapi.org/v2/top-headlines?apiKey=${props.apiKey}&category=${props.category}&page=${page}&pagesize=${props.pageSize}`;
 		setLoaing(true);
 		let data = await fetch(url, cors());
 		props.setProgress(30);
 		let parseData = await data.json();
 		props.setProgress(60);
-console.log(parseData);
+
 		setArticles(parseData.articles);
 		setPage(page);
 		setTotalResults(parseData.totalResults);
@@ -40,7 +40,7 @@ console.log(parseData);
 	}, []);
 
 	const fetchMoreData = async () => {
-		const url = `https://newsapi.in/newsapi/news.php?apiKey=${
+		const url = `https://newsapi.org/v2/top-headlines?apiKey=${
 			props.apiKey
 		}&country=${props.country}&category=${props.category}&page=${
 			page + 1
@@ -51,20 +51,6 @@ console.log(parseData);
 		setArticles(articles.concat(parseData.articles));
 		setTotalResults(parseData.totalResults);
 	};
-
-	// hendelPreClick = async () => {
-	//   this.setState({
-	//     page: this.state.page - 1
-	//   })
-	//   this.updateNews()
-	// }
-
-	// hendelNextClick = async () => {
-	//   this.setState({
-	//     page: this.state.page + 1
-	//   })
-	//   this.updateNews()
-	// }
 
 	return (
 		<>
